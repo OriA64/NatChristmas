@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I LOVE YOU NAT MERRY CHRISTMAS!!!</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <h1>Loading<span id="loading-dots"></span></h1>
+        <div id="loading-subtext">Follow the candy canes!!!</div>
+    </div>
+
+    <!-- Game World (Initially Hidden) -->
+    <div id="world" style="display: none;">
+        <div class="npc" id="npc1" data-x="500" data-y="900"><img src="chickengif.gif" alt="Chicken GIF"></div>
+        <div class="npc" id="npc2" data-x="400" data-y="120"><img src="comp1.gif" alt="Cow GIF"></div>
+        <div class="npc" id="npc3" data-x="700" data-y="500"><img src="cowgif.gif" alt="Pig GIF"></div>
+        <div class="npc" id="npc4" data-x="1100" data-y="200"><img src="babycow.gif" alt="Sheep GIF"></div>
+        <div class="npc" id="npc5" data-x="1400" data-y="800"><img src="ezgif-479506b9e26835.gif" alt="Usagi GIF"></div>
+        <div class="npc" id="npc6" data-x="800" data-y="700"><img src="lavaant.gif" alt="LavaAnt GIF"></div>
+        <div class="npc" id="npc7" data-x="900" data-y="2600"><img src="tunnelingmole.gif" alt="TunnelingMole GIF"></div>
+        <div class="npc" id="npc8" data-x="800" data-y="2640"><img src="rhinobeetle.gif" alt="RhinoBeetle GIF"></div>
+        <div class="npc" id="npc9" data-x="1100" data-y="2600"><img src="infectedmouse.gif" alt="InfectedMouse GIF"></div>
+        <div class="npc" id="npc10" data-x="870" data-y="2800"><img src="engorgedtick.gif" alt="EngorgedTick GIF"></div>
+        <div class="npc" id="npc11" data-x="1000" data-y="2800"><img src="dungbeetle.gif" alt="DungBeetle GIF"></div>
+    </div>
+
+    <div id="character"></div> <!-- Fixed character in the center -->
+
+    <div id="npc-image"></div> <!-- NPC Image above the dialogue box -->
+    <div id="dialogue-box"></div> <!-- Dialogue Box at the bottom of the screen -->
+
+    <!-- Compass overlay canvas -->
+    <canvas id="compass-overlay"></canvas>
+
+    <!-- On-screen D-pad -->
+    <div id="dpad" aria-label="On-screen arrow keys" role="group">
+        <button id="btn-up" aria-label="Up">▲</button>
+        <div class="row">
+            <button id="btn-left" aria-label="Left">◀</button>
+            <button id="btn-right" aria-label="Right">▶</button>
+        </div>
+        <button id="btn-down" aria-label="Down">▼</button>
+    </div>
+
+    <!-- On-screen Interact Button -->
+    <button id="btn-interact" aria-label="Interact">Interact</button>
+
+    <audio id="background-music" loop autoplay>
+        <source src="cbgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script> <!-- Link to external JavaScript -->
+    <script src="snow.js"></script> <!-- Snow effect script -->
+    
+</body>
+</html>
