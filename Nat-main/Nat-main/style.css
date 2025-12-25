@@ -1,0 +1,224 @@
+@font-face {
+    font-family: 'CuteFont';
+    src: url('learners.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #a4c364;
+    font-family: 'CuteFont', sans-serif;
+}
+
+#character {
+    width: 140px;
+    height: 140px;
+    background-image: url('walking2/dd1.png'); /* Initial frame */
+    background-size: cover;
+    position: fixed;
+    z-index: 100;
+    transition: background-image 0.1s;
+}
+
+#world {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('cbg.jpg');
+    background-repeat: repeat;
+    background-size: 504px 504px; /* 25% smaller (672 * 0.75) */
+    background-position: 0 0;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+}
+
+.npc {
+    background-size: cover;
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#npc-image {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: none;
+    z-index: 1001;
+}
+/* Loading screen styles */
+/* Loading screen styles */
+#loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* stack title and subtext vertically */
+    color: white;
+    font-size: 48px;
+    z-index: 10000;
+}
+
+#loading-dots {
+    letter-spacing: 10px; /* This adds space between each period */
+}
+
+/* Loading subtext spacing */
+#loading-subtext {
+    margin-top: 50px;
+}
+
+#dialogue-box {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.2); /* more transparent */
+    padding: 26px 48px; /* Increase padding to make the box larger */
+    border-radius: 10px;
+    text-align: center;
+    color: rgba(255, 105, 180, 1); /* full opacity pink text */
+    /* subtler drop shadow for less noticeable effect */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: inline-block;
+    max-width: 900px;
+    font-size: 56px;
+    line-height: 1.15;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    display: none;
+}
+
+/* On-screen D-pad 10px below vertical center */
+#dpad {
+    position: fixed;
+    top: calc(50% + 220px);
+    left: calc(50% - 100px);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 1100;
+}
+
+#dpad .row {
+    display: flex;
+    gap: 40px;
+}
+
+#dpad button {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    border: 2px solid rgba(255,105,180,0.55);
+    background: transparent; /* transparent box */
+    font-size: 24px;
+    color: rgba(255,105,180,0.9); /* slightly pink arrows */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    opacity: 0.9;
+}
+
+#dpad button:active { transform: scale(0.96); }
+
+
+/* Interact button to the right of the D-pad */
+#btn-interact {
+    position: fixed;
+    top: calc(50% + 220px); /* align vertically with D-pad */
+    left: calc(50% + 60px); /* to the right of D-pad */
+    display: inline-block; /* let the box wrap the text */
+    padding: 10px 16px; /* comfortable touch target */
+    border-radius: 12px;
+    border: 2px solid rgba(255,105,180,0.55);
+    background: transparent; /* transparent box */
+    color: rgba(255,105,180,0.9);
+    font-size: 22px;
+    line-height: 1; /* keep box snug to text */
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    opacity: 0.9; /* match D-pad current opacity */
+    z-index: 1100;
+}
+
+#btn-interact:active { transform: scale(0.96); }
+
+/* Compass overlay canvas */
+#compass-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* allow clicks to pass through */
+    z-index: 1050; /* above world and character, below D-pad/interact (1100) */
+    color: rgba(255,105,180,0.9);
+}
+
+
+/* Individual NPC Positions and Sizes */
+#npc1 { left: 500px; top: 900px; width: 50px; height: 50px; }
+#npc2 { left: 400px; top: 120px; width: 100px; height: 100px; }
+#npc3 { left: 700px; top: 500px; width: 100px; height: 100px; }
+#npc4 { left: 1100px; top: 200px; width: 80px; height: 80px; }
+#npc5 { left: 1400px; top: 800px; width: 60px; height: 60px; }
+#npc6 { left: 800px; top: 700px; width: 30px; height: 30px; }
+#npc7 { left: 900px; top: 2600px; width: 45px; height: 45px; }
+#npc8 { left: 800px; top: 2640px; width: 45px; height: 45px; }
+#npc9 { left: 1100px; top: 2600px; width: 45px; height: 45px; }
+#npc10 { left: 870px; top: 2800px; width: 45px; height: 45px; }
+#npc11 { left: 1000px; top: 2800px; width: 45px; height: 45px; }
+
+/* Hide touch controls by default (desktop) */
+#dpad, #btn-interact { display: none; }
+
+/* Show touch controls on touch devices (iPhone/iPad, Android) */
+@media (hover: none) and (pointer: coarse) {
+    #dpad { display: flex; }
+    #btn-interact { display: block; }
+}
+
+/* On touch devices, place dialogue at the top and make it larger */
+@media (hover: none) and (pointer: coarse) {
+    #dialogue-box {
+        top: calc(env(safe-area-inset-top) + 12px);
+        bottom: auto;
+        /* Span almost full width, respecting iPhone safe areas */
+        left: calc(env(safe-area-inset-left) + 6px);
+        right: calc(env(safe-area-inset-right) + 6px);
+        transform: none;
+        font-size: 33px; /* large base size for mobile */
+        /* Take all available width between left/right; avoid additional max-width cap */
+        max-width: none;
+        /* Allow wrapping so long lines don't overflow off-screen */
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        /* Limit height so it doesn't exceed the screen; wrap instead of overflow */
+        max-height: 45vh;
+        overflow-y: visible;
+        padding: 12px 14px; /* slimmer horizontal padding for more text width */
+        box-sizing: border-box;
+    }
+}
